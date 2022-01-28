@@ -50,14 +50,19 @@ namespace ECovidVerify.Controllers
         {
             if (ModelState.IsValid)
             {
+                patientInfo.Id = Guid.NewGuid().ToString();
                 db.PatientInfo.Add(patientInfo);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Summary");
             }
 
             return View(patientInfo);
         }
+        public ActionResult Summary()
+        {
 
+            return View();
+        }
         // GET: PatientInfoes/Edit/5
         public ActionResult Edit(string id)
         {
