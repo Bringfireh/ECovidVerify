@@ -1,0 +1,50 @@
+﻿@model ECovidVerify.Models.VaccineInfo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>VaccineInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PatientInfo.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PatientInfo.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfVaccination)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfVaccination)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VaccineType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VaccineType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Jab)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Jab)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
