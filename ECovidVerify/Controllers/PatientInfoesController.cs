@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ECovidVerify.Models;
+using QRCoder;
 
 namespace ECovidVerify.Controllers
 {
@@ -53,10 +57,28 @@ namespace ECovidVerify.Controllers
                 patientInfo.Id = Guid.NewGuid().ToString();
                 db.PatientInfo.Add(patientInfo);
                 db.SaveChanges();
+                string url = "https://ECovidVerify.com/PatientInfoes/Details/" + patientInfo.Id;
+                GenerateQRCode(url);
                 return RedirectToAction("Summary");
             }
 
             return View(patientInfo);
+        }
+        public EmptyResult GenerateQRCode(string urladd)
+        {
+            using(MemoryStream ms = new MemoryStream())
+            {
+                QRCodeGenerator qg = new QRCodeGenerator();
+                QRCodeData qrcodedata = qg.CreateQrCode(urladd, QRCodeGenerator.ECCLevel.Q);
+                QRCode qR = new QRCode(qrcodedata);
+                using(Bitmap b = qR.GetGraphic(20))
+                {
+                    b.Save(ms, ImageFormat.Png);
+                    Session["QRCodeImage"] = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray());
+
+                }
+            }
+            return new EmptyResult();
         }
         public ActionResult Summary()
         {

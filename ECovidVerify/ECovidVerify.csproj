@@ -278,6 +278,7 @@
     <Content Include="Views\VaccineInfoes\Details.cshtml" />
     <Content Include="Views\VaccineInfoes\Edit.cshtml" />
     <Content Include="Views\VaccineInfoes\Index.cshtml" />
+    <Content Include="Views\PatientInfoes\Summary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
