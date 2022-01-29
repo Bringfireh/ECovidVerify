@@ -57,7 +57,7 @@ namespace ECovidVerify.Controllers
                 patientInfo.Id = Guid.NewGuid().ToString();
                 db.PatientInfo.Add(patientInfo);
                 db.SaveChanges();
-                string url = "https://ECovidVerify.com/PatientInfoes/Details/" + patientInfo.Id;
+                string url = "Name: " + patientInfo.LastName +  " " + patientInfo.FirstName + " " + patientInfo.MiddleName.Substring(0,1) +  ", Vaccination Status: Vaccinated, " + "Vaccination No: "+ patientInfo.Id;
                 GenerateQRCode(url);
                 return RedirectToAction("Summary");
             }
