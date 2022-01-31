@@ -18,13 +18,13 @@ namespace ECovidVerify.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: PatientInfoes
+       
         public ActionResult Index()
         {
             return View(db.PatientInfo.ToList());
         }
 
-        // GET: PatientInfoes/Details/5
+       
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -39,15 +39,13 @@ namespace ECovidVerify.Controllers
             return View(patientInfo);
         }
 
-        // GET: PatientInfoes/Create
+       
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: PatientInfoes/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,FirstName,LastName,MiddleName,DateOfBirth,Gender,PhoneNumber,Email,Address,City,Zip,Race,Ethnicity,HealthInsurance,CHName,CHDateOfBirth,CHEmployer,InsuranceCompany,MemberID,GroupNo,NameOfInsured,RelationshipToInsured")] PatientInfo patientInfo)
@@ -65,6 +63,8 @@ namespace ECovidVerify.Controllers
 
             return View(patientInfo);
         }
+
+
         public EmptyResult GenerateQRCode(string urladd)
         {
             using(MemoryStream ms = new MemoryStream())
@@ -101,9 +101,7 @@ namespace ECovidVerify.Controllers
             return View(patientInfo);
         }
 
-        // POST: PatientInfoes/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,MiddleName,DateOfBirth,Gender,PhoneNumber,Email,Address,City,Zip,Race,Ethnicity,HealthInsurance,CHName,CHDateOfBirth,CHEmployer,InsuranceCompany,MemberID,GroupNo,NameOfInsured,RelationshipToInsured")] PatientInfo patientInfo)
