@@ -18,26 +18,43 @@ namespace ECovidVerify.Models
 
         public string Id { get; set; }
 
+        [Required]
+        [Display(Name = "First Name")]
         [StringLength(128)]
         public string FirstName { get; set; }
 
+        [Required]
+        [Display(Name = "Last Name")]
         [StringLength(128)]
         public string LastName { get; set; }
 
+        [Required]
+        [Display(Name = "Middle Name")]
         [StringLength(128)]
         public string MiddleName { get; set; }
 
+        [Column(TypeName = "date")]
+        [Display(Name = "Date Of Birth")]
         public DateTime? DateOfBirth { get; set; }
 
+        [Required]
+        [Display(Name = "Gender")]
         [StringLength(128)]
         public string Gender { get; set; }
 
+        [Required]
+        [Display(Name = "Phone Number")]
         [StringLength(128)]
         public string PhoneNumber { get; set; }
 
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
         [StringLength(128)]
         public string Email { get; set; }
 
+        [Required]
+        [Display(Name = "Address")]
         public string Address { get; set; }
 
         [StringLength(128)]

@@ -14,6 +14,7 @@ using QRCoder;
 
 namespace ECovidVerify.Controllers
 {
+    [Authorize]
     public class PatientInfoesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
