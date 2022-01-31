@@ -35,6 +35,7 @@ namespace ECovidVerify.Models
 
         [Column(TypeName = "date")]
         [Display(Name = "Date Of Birth")]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DateOfBirth { get; set; }
 
         [Required]

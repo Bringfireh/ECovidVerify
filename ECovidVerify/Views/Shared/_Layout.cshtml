@@ -23,7 +23,7 @@
             position: relative;
             /*max-width:600px;*/
             padding: 30px;
-            background: rgba(255,255,255,.6);
+            background: rgba(255,255,255,.8);
             box-shadow: 0 5px 15px rgba(0,0,0,.001);
             border-radius: 25px;
             /*transform:translateY(50px);*/
@@ -51,7 +51,7 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Patient", "Index", "PatientInfoes")</li>
                     @*<li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -64,9 +64,23 @@
             <p>&copy; @DateTime.Now.Year - ECovidVerify</p>
         </footer>
     </div>
-
+    @Styles.Render("~/bundles/cssjqryUi")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryui")
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('input[type=datetime]').datepicker({
+                dateFormat: "dd-MM-yy",
+                changeMonth: true,
+                changeYear: true,
+                //yearRange: "-60:+0"
+            });
+            $('[data-toggle="tooltip"]').tooltip();
+
+        });
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
