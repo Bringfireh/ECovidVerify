@@ -1,9 +1,43 @@
-﻿
+﻿@model ECovidVerify.Models.PatientInfo
 @{
     ViewBag.Title = "Summary";
 }
 <div class="box">
     <h2>Summary</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <td>Name:</td>
+                    <td>@Model.LastName &nbsp;@Model.FirstName &nbsp;@Model.MiddleName </td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>@Model.Gender</td>
+                </tr>
+                <tr>
+                    <td>Date Of Birth</td>
+                    <td>@Model.DateOfBirth</td>
+                </tr>
+                <tr>
+                    <td>Phone Number</td>
+                    <td>@Model.PhoneNumber</td>
+                </tr>
+                <tr>
+                    <td>Email Address</td>
+                    <td>@Model.Email</td>
+                </tr>
+                <tr>
+                    <td>Contact Address</td>
+                    <td>@Model.Address</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <div id="verify">
+                <img src="@Session["QRCodeImage"].ToString()" height="300" width="300" />
+            </div>
+        </div>
+    </div>
 
-    <img src="@Session["QRCodeImage"].ToString()" height="300" width="300" />
 </div>

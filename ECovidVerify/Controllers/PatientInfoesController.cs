@@ -56,6 +56,7 @@ namespace ECovidVerify.Controllers
                 patientInfo.Id = Guid.NewGuid().ToString();
                 db.PatientInfo.Add(patientInfo);
                 db.SaveChanges();
+                Session["id"] = patientInfo.Id;
                 string midinitial = (patientInfo.MiddleName != null) ? patientInfo.MiddleName.Substring(0, 1) : " ";
                 string url = "Name: " + patientInfo.LastName +  " " + patientInfo.FirstName + " " + midinitial +  ", Vaccination Status: Vaccinated, " + "Vaccination No: "+ patientInfo.Id;
                 GenerateQRCode(url);
@@ -84,8 +85,13 @@ namespace ECovidVerify.Controllers
         }
         public ActionResult Summary()
         {
-
-            return View();
+            string id = Session["id"].ToString();
+            PatientInfo p = db.PatientInfo.Find(id);
+            if (p == null)
+            {
+                return HttpNotFound();
+            }
+            return View(p);
         }
         // GET: PatientInfoes/Edit/5
         public ActionResult Edit(string id)
